@@ -1,4 +1,4 @@
-NOME DO ROBÔ: Nursebot
+Nursebot
 Aplicação do robô
 
 Trabalho de Interação Humano-Robô (IHR) apresentado ao Centro Universitário FEI, como parte dos requisitos necessários para aprovação na disciplina de Interação Humano-Robô (CCR230) do curso de Engenharia de Robôs, orientado pelo Prof. Dr. Fagner de Assis Moura Pimentel.

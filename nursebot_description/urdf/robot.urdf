@@ -1,0 +1,758 @@
+<robot name="robo_enfermeiro">
+
+    <!-- Base -->
+    <link name="base_link">
+        <inertial>
+            <mass value="20.0"/> <!-- 20000g = 20kg -->
+            <origin xyz="0 0 0.1" rpy="0 0 0"/>
+            <inertia
+                ixx="0.2083" ixy="0.0" ixz="0.0"
+                iyy="0.2083" iyz="0.0"
+                izz="0.125"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0.1" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.25" length="0.20"/>
+            </geometry>
+            <material name="gray">
+                <color rgba="0.5 0.5 0.5 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <!-- Torso -->
+    <link name="torso_link">
+        <inertial>
+            <mass value="4.0"/> <!-- 4000g = 4kg -->
+            <origin xyz="0 0 0.55" rpy="0 0 0"/>
+            <inertia
+                ixx="0.3667" ixy="0.0" ixz="0.0"
+                iyy="0.3667" iyz="0.0"
+                izz="0.125"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.25" length="1.10"/>
+            </geometry>
+            <material name="blue">
+                <color rgba="0.0 0.0 1.0 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <!-- Cabeça -->
+    <link name="pescoco_link">
+        <inertial>
+            <mass value="0.1"/> <!-- 100g = 0.1kg -->
+            <origin xyz="0 0 0.0425" rpy="0 0 0"/>
+            <inertia
+                ixx="0.000083" ixy="0.0" ixz="0.0"
+                iyy="0.000083" iyz="0.0"
+                izz="0.000042"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0.0425" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.05 0.05 0.20"/>
+            </geometry>
+            <material name="Cyan1">
+                <color rgba="0 0.9 0.9 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <link name="cabeca_link">
+        <inertial>
+            <mass value="0.5"/> <!-- 500g = 0.5kg -->
+            <origin xyz="0 0 0.0" rpy="0 0 0"/>
+            <inertia
+                ixx="0.0067" ixy="0.0" ixz="0.0"
+                iyy="0.00042" iyz="0.0"
+                izz="0.0067"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0.0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.4 0.03 0.20"/>
+            </geometry>
+            <material name="Cyan1">
+                <color rgba="0 0.9 0.9 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <!-- Braço Direito -->
+    <link name="right_shoulder_link">
+        <inertial>
+            <mass value="0.2"/> <!-- 200g = 0.2kg -->
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <inertia
+                ixx="0.000042" ixy="0.0" ixz="0.0"
+                iyy="0.000083" iyz="0.0"
+                izz="0.000083"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.055 0.025 0.10"/>
+            </geometry>
+            <material name="blue">
+                <color rgba="0 1 0 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <link name="right_shoulder_forward_link">
+        <inertial>
+            <mass value="0.2"/> <!-- 200g = 0.2kg -->
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <inertia
+                ixx="0.000042" ixy="0.0" ixz="0.0"
+                iyy="0.000083" iyz="0.0"
+                izz="0.000083"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.03 0.05 0.03"/>
+            </geometry>
+            <material name="gray">
+                <color rgba="0 0 0.9 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <link name="right_shoulder_up_link">
+        <inertial>
+            <mass value="0.2"/> <!-- 200g = 0.2kg -->
+            <origin xyz="0 0 0" rpy="1.57 0 0"/>
+            <inertia
+                ixx="0.000042" ixy="0.0" ixz="0.0"
+                iyy="0.000083" iyz="0.0"
+                izz="0.000083"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="1.57 0 0"/>
+            <geometry>
+                <box size="0.03 0.05 0.03"/>
+            </geometry>
+            <material name="gray">
+                <color rgba="0 0 0.7 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <link name="right_upper_arm_link">
+        <inertial>
+            <mass value="0.4"/> <!-- 400g = 0.4kg -->
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <inertia
+                ixx="0.003" ixy="0.0" ixz="0.0"
+                iyy="0.003" iyz="0.0"
+                izz="0.000075"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.025" length="0.3"/>
+            </geometry>
+            <material name="blue">
+                <color rgba="0.9 0.9 0.9 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <link name="right_elbow_link">
+        <inertial>
+            <mass value="0.2"/> <!-- 200g = 0.2kg -->
+            <origin xyz="0 0 0" rpy="0 0 1.57"/>
+            <inertia
+                ixx="0.000042" ixy="0.0" ixz="0.0"
+                iyy="0.000042" iyz="0.0"
+                izz="0.000083"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 1.57"/>
+            <geometry>
+                <box size="0.035 0.035 0.05"/>
+            </geometry>
+            <material name="Yellow2">
+                <color rgba="0 0 0.7 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <link name="right_lower_arm_link">
+        <inertial>
+            <mass value="0.4"/> <!-- 400g = 0.4kg -->
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <inertia
+                ixx="0.003" ixy="0.0" ixz="0.0"
+                iyy="0.003" iyz="0.0"
+                izz="0.000075"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.025" length="0.30"/>
+            </geometry>
+            <material name="Yellow2">
+                <color rgba="0.9 0.9 0.9 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <link name="right_wrist_link">
+        <inertial>
+            <mass value="0.2"/> <!-- 200g = 0.2kg -->
+            <origin xyz="0 0 0" rpy="1.57 0 0"/>
+            <inertia
+                ixx="0.000083" ixy="0.0" ixz="0.0"
+                iyy="0.000042" iyz="0.0"
+                izz="0.000042"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="1.57 0 0"/>
+            <geometry>
+                <box size="0.03 0.05 0.4"/>
+            </geometry>
+            <material name="Blue2">
+                <color rgba="0 0 0.7 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <link name="right_hand_link">
+        <inertial>
+            <mass value="0.3"/> <!-- 300g = 0.3kg -->
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <inertia
+                ixx="0.004" ixy="0.0" ixz="0.0"
+                iyy="0.0005" iyz="0.0"
+                izz="0.004"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.02 0.4 0.3"/>
+            </geometry>
+            <material name="Grey1">
+                <color rgba="0.9 0.9 0.9 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <!-- Braço Esquerdo -->
+    <link name="left_shoulder_link">
+        <inertial>
+            <mass value="0.2"/> <!-- 200g = 0.2kg -->
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <inertia
+                ixx="0.000042" ixy="0.0" ixz="0.0"
+                iyy="0.000083" iyz="0.0"
+                izz="0.000083"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.055 0.025 0.10"/>
+            </geometry>
+            <material name="blue">
+                <color rgba="0 1 0 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <link name="left_shoulder_forward_link">
+        <inertial>
+            <mass value="0.2"/> <!-- 200g = 0.2kg -->
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <inertia
+                ixx="0.000042" ixy="0.0" ixz="0.0"
+                iyy="0.000083" iyz="0.0"
+                izz="0.000083"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.03 0.05 0.03"/>
+            </geometry>
+            <material name="gray">
+                <color rgba="0 0 0.9 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <link name="left_shoulder_up_link">
+        <inertial>
+            <mass value="0.2"/> <!-- 200g = 0.2kg -->
+            <origin xyz="0 0 0" rpy="1.57 0 0"/>
+            <inertia
+                ixx="0.000042" ixy="0.0" ixz="0.0"
+                iyy="0.000083" iyz="0.0"
+                izz="0.000083"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="1.57 0 0"/>
+            <geometry>
+                <box size="0.03 0.05 0.03"/>
+            </geometry>
+            <material name="gray">
+                <color rgba="0 0 0.7 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <link name="left_upper_arm_link">
+        <inertial>
+            <mass value="0.4"/> <!-- 400g = 0.4kg -->
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <inertia
+                ixx="0.003" ixy="0.0" ixz="0.0"
+                iyy="0.003" iyz="0.0"
+                izz="0.000075"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.025" length="0.3"/>
+            </geometry>
+            <material name="blue">
+                <color rgba="0.9 0.9 0.9 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <link name="left_elbow_link">
+        <inertial>
+            <mass value="0.2"/> <!-- 200g = 0.2kg -->
+            <origin xyz="0 0 0" rpy="0 0 1.57"/>
+            <inertia
+                ixx="0.000042" ixy="0.0" ixz="0.0"
+                iyy="0.000042" iyz="0.0"
+                izz="0.000083"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 1.57"/>
+            <geometry>
+                <box size="0.035 0.035 0.05"/>
+            </geometry>
+            <material name="Yellow2">
+                <color rgba="0 0 0.7 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <link name="left_lower_arm_link">
+        <inertial>
+            <mass value="0.4"/> <!-- 400g = 0.4kg -->
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <inertia
+                ixx="0.003" ixy="0.0" ixz="0.0"
+                iyy="0.003" iyz="0.0"
+                izz="0.000075"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.025" length="0.30"/>
+            </geometry>
+            <material name="Yellow2">
+                <color rgba="0.9 0.9 0.9 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <link name="left_wrist_link">
+        <inertial>
+            <mass value="0.05"/> <!-- 50g = 0.05kg -->
+            <origin xyz="0 0 0" rpy="1.57 0 0"/>
+            <inertia
+                ixx="0.000021" ixy="0.0" ixz="0.0"
+                iyy="0.000021" iyz="0.0"
+                izz="0.000021"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="1.57 0 0"/>
+            <geometry>
+                <box size="0.02 0.02 0.02"/>
+            </geometry>
+            <material name="Blue2">
+                <color rgba="0 0 0.7 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <link name="left_hand_link">
+        <inertial>
+            <mass value="0.05"/> <!-- 50g = 0.05kg -->
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <inertia
+                ixx="0.000021" ixy="0.0" ixz="0.0"
+                iyy="0.000021" iyz="0.0"
+                izz="0.000021"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.02 0.02 0.02"/>
+            </geometry>
+            <material name="Grey1">
+                <color rgba="0.9 0.9 0.9 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <!-- Câmeras -->
+    <link name="cam1_link">
+        <inertial>
+            <mass value="0.2"/> <!-- 200g = 0.2kg -->
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <inertia
+                ixx="0.000072" ixy="0.0" ixz="0.0"
+                iyy="0.000072" iyz="0.0"
+                izz="0.000072"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <sphere radius="0.03"/>
+            </geometry>
+            <material name="black">
+                <color rgba="0 0 0 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <link name="cam2_link">
+        <inertial>
+            <mass value="0.2"/> <!-- 200g = 0.2kg -->
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <inertia
+                ixx="0.000072" ixy="0.0" ixz="0.0"
+                iyy="0.000072" iyz="0.0"
+                izz="0.000072"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <sphere radius="0.03"/>
+            </geometry>
+            <material name="black">
+                <color rgba="0 0 0 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <link name="cam3_link">
+        <inertial>
+            <mass value="0.2"/> <!-- 200g = 0.2kg -->
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <inertia
+                ixx="0.000072" ixy="0.0" ixz="0.0"
+                iyy="0.000072" iyz="0.0"
+                izz="0.000072"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <sphere radius="0.03"/>
+            </geometry>
+            <material name="black">
+                <color rgba="0 0 0 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <link name="cam4_link">
+        <inertial>
+            <mass value="0.2"/> <!-- 200g = 0.2kg -->
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <inertia
+                ixx="0.000072" ixy="0.0" ixz="0.0"
+                iyy="0.000072" iyz="0.0"
+                izz="0.000072"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <sphere radius="0.03"/>
+            </geometry>
+            <material name="black">
+                <color rgba="0 0 0 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <!-- Rodas -->
+    <link name="roda1_link">
+        <inertial>
+            <mass value="2.0"/> <!-- 2000g = 2kg -->
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <inertia
+                ixx="0.0048" ixy="0.0" ixz="0.0"
+                iyy="0.0048" iyz="0.0"
+                izz="0.0048"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <sphere radius="0.08"/>
+            </geometry>
+            <material name="black">
+                <color rgba="0 0 0 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <link name="roda2_link">
+        <inertial>
+            <mass value="2.0"/> <!-- 2000g = 2kg -->
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <inertia
+                ixx="0.0048" ixy="0.0" ixz="0.0"
+                iyy="0.0048" iyz="0.0"
+                izz="0.0048"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <sphere radius="0.08"/>
+            </geometry>
+            <material name="black">
+                <color rgba="0 0 0 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <link name="roda3_link">
+        <inertial>
+            <mass value="2.0"/> <!-- 2000g = 2kg -->
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <inertia
+                ixx="0.0048" ixy="0.0" ixz="0.0"
+                iyy="0.0048" iyz="0.0"
+                izz="0.0048"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <sphere radius="0.08"/>
+            </geometry>
+            <material name="black">
+                <color rgba="0 0 0 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <!-- Tela -->
+    <link name="screen1_link">
+        <inertial>
+            <mass value="0.4"/> <!-- 400g = 0.4kg -->
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <inertia
+                ixx="0.0027" ixy="0.0" ixz="0.0"
+                iyy="0.00027" iyz="0.0"
+                izz="0.0027"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.02 0.2 0.4"/>
+            </geometry>
+            <material name="black">
+                <color rgba="0 0 0 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <!-- Joints_________________________________________________________________________________________________________________________________________________________________________________________ -->
+    <!-- (Os joints permanecem iguais ao seu código original) -->
+    <!-- Base para Torso -->
+    <joint name="base_to_torso" type="revolute">
+        <parent link="base_link"/>
+        <child link="torso_link"/>
+        <origin xyz="0 0 0.75" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-2" upper="2" effort="10" velocity="3"/>
+    </joint>
+
+    <!-- Torso para Cabeça -->
+    <joint name="torso_to_pescoco" type="revolute">
+        <parent link="torso_link"/>
+        <child link="pescoco_link"/>
+        <origin xyz="0 0 0.55" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+    </joint>
+
+    <!-- Braço Direito -->
+    <joint name="right_shoulder_joint" type="fixed">
+        <parent link="torso_link"/>
+        <child link="right_shoulder_link"/>
+        <origin xyz="0 -0.25 0.30" rpy="0 0 0"/>
+    </joint>
+
+    <joint name="right_shoulder_forward_joint" type="revolute">
+        <parent link="right_shoulder_link"/>
+        <child link="right_shoulder_forward_link"/>
+        <origin xyz="0 -0.025 0" rpy="0 0 0"/>
+        <limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+
+    <joint name="right_shoulder_up_joint" type="revolute">
+        <parent link="right_shoulder_forward_link"/>
+        <child link="right_shoulder_up_link"/>
+        <origin xyz="0 -0.04 -0.01" rpy="0 -0.707 0"/>
+        <limit lower="-1" upper="1.57" effort="10" velocity="3"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+
+    <joint name="right_upper_arm_joint" type="fixed">
+        <parent link="right_shoulder_up_link"/>
+        <child link="right_upper_arm_link"/>
+        <origin xyz="0 0 -0.15" rpy="0 0 0"/>
+    </joint>
+
+    <joint name="right_elbow_joint" type="revolute">
+        <parent link="right_upper_arm_link"/>
+        <child link="right_elbow_link"/>
+        <origin xyz="-0.005 0 -0.15" rpy="0 0 0"/>
+        <limit lower="-1.2" upper="-0.5" effort="10" velocity="3"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+
+    <joint name="right_lower_arm_joint" type="fixed">
+        <parent link="right_elbow_link"/>
+        <child link="right_lower_arm_link"/>
+        <origin xyz="0 0 -0.15" rpy="0 0 0"/>
+    </joint>
+
+    <joint name="right_wrist_joint" type="revolute">
+        <parent link="right_lower_arm_link"/>
+        <child link="right_wrist_link"/>
+        <origin xyz="0 0 -0.15" rpy="0 0 0"/>
+        <limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+
+    <joint name="right_hand_joint" type="fixed">
+        <parent link="right_wrist_link"/>
+        <child link="right_hand_link"/>
+        <origin xyz="0 0 -0.15" rpy="0 0 0"/>
+    </joint>
+
+    <!-- Braço Esquerdo -->
+    <joint name="left_shoulder_joint" type="fixed">
+        <parent link="torso_link"/>
+        <child link="left_shoulder_link"/>
+        <origin xyz="0 0.25 0.30" rpy="0 0 0"/>
+    </joint>
+
+    <joint name="left_shoulder_forward_joint" type="revolute">
+        <parent link="left_shoulder_link"/>
+        <child link="left_shoulder_forward_link"/>
+        <origin xyz="0 0.025 0" rpy="0 0 0"/>
+        <limit lower="-0.3" upper="1.57" effort="10" velocity="3"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+
+    <joint name="left_shoulder_up_joint" type="revolute">
+        <parent link="left_shoulder_forward_link"/>
+        <child link="left_shoulder_up_link"/>
+        <origin xyz="0 0.04 -0.01" rpy="0 -0.707 0"/>
+        <limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+
+    <joint name="left_upper_arm_joint" type="fixed">
+        <parent link="left_shoulder_up_link"/>
+        <child link="left_upper_arm_link"/>
+        <origin xyz="0 0 -0.15" rpy="0 0 0"/>
+    </joint>
+
+    <joint name="left_elbow_joint" type="revolute">
+        <parent link="left_upper_arm_link"/>
+        <child link="left_elbow_link"/>
+        <origin xyz="-0.005 0 -0.15" rpy="0 0 0"/>
+        <limit lower="-1.546" upper="1.546" effort="10" velocity="3"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+
+    <joint name="left_lower_arm_joint" type="fixed">
+        <parent link="left_elbow_link"/>
+        <child link="left_lower_arm_link"/>
+        <origin xyz="0 0 -0.15" rpy="0 0 0"/>
+    </joint>
+
+    <joint name="left_wrist_joint" type="fixed">
+        <parent link="left_lower_arm_link"/>
+        <child link="left_wrist_link"/>
+        <origin xyz="0 0 -0.15" rpy="0 0 0"/>
+    </joint>
+
+    <joint name="left_hand_joint" type="fixed">
+        <parent link="left_wrist_link"/>
+        <child link="left_hand_link"/>
+        <origin xyz="0 0 0.0" rpy="0 0 0"/>
+    </joint>
+
+    <joint name="cabeca_joint" type="revolute">
+        <parent link="pescoco_link"/>
+        <child link="cabeca_link"/>
+        <origin xyz="0.02 0 0.15" rpy="0 0 1.5708"/>
+        <limit lower="-0.8" upper="0.092" effort="10" velocity="3"/>
+        <axis xyz="1 0 0"/>
+    </joint>
+
+    <joint name="cam1_joint" type="fixed">
+        <parent link="torso_link"/>
+        <child link="cam1_link"/>
+        <origin xyz="0.25 0 0.55" rpy="0 0 0"/>
+    </joint>
+
+    <joint name="cam2_joint" type="fixed">
+        <parent link="torso_link"/>
+        <child link="cam2_link"/>
+        <origin xyz="-0.25 0 0.55" rpy="0 0 0"/>
+    </joint>
+
+    <joint name="cam3_joint" type="fixed">
+        <parent link="torso_link"/>
+        <child link="cam3_link"/>
+        <origin xyz="0 0.25 0.55" rpy="0 0 0"/>
+    </joint>
+
+    <joint name="cam4_joint" type="fixed">
+        <parent link="torso_link"/>
+        <child link="cam4_link"/>
+        <origin xyz="0 -0.25 0.55" rpy="0 0 0"/>
+    </joint>
+
+    <joint name="roda1_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="roda1_link"/>
+        <origin xyz="0.2 0.2 0" rpy="0 0 0"/>
+    </joint>
+
+    <joint name="roda2_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="roda2_link"/>
+        <origin xyz="0.2 -0.2 0" rpy="0 0 0"/>
+    </joint>
+
+    <joint name="roda3_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="roda3_link"/>
+        <origin xyz="-0.25 0 0" rpy="0 0 0"/>
+    </joint>
+
+    <joint name="screen1_joint" type="fixed">
+        <parent link="torso_link"/>
+        <child link="screen1_link"/>
+        <origin xyz="0.25 0 0.3" rpy="0 0 0"/>
+    </joint>
+</robot>
